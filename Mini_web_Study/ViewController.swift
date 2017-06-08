@@ -21,9 +21,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UIWebViewDelegate {
     
     @IBOutlet weak var spiningActive: UIActivityIndicatorView!
     
+    
+   
+    
+    
     @IBAction func bookMarkAction(_ sender: Any) {
         let bookMarkUrl = bookMarkSegmentCountrol.titleForSegment(at: bookMarkSegmentCountrol.selectedSegmentIndex)
-        let urlString = "http://www.\(bookMarkUrl!).com"
+        let urlString = "https://www.\(bookMarkUrl!).com"
         miniWebVIew.loadRequest(URLRequest(url: URL(string: urlString)!))
         urlTextField.text = urlString
         
@@ -43,7 +47,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let urlString = "http://www.facebook.com"
+        let urlString = "https://www.facebook.com"
         miniWebVIew.loadRequest(URLRequest(url: URL(string: urlString)!))
         urlTextField.text = urlString
        
