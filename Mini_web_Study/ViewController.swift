@@ -9,7 +9,7 @@
 import UIKit
 import GoogleMobileAds
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate, UIWebViewDelegate {
 
     @IBOutlet weak var bannerView: GADBannerView!
     
@@ -19,9 +19,36 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var miniWebVIew: UIWebView!
     
+    @IBOutlet weak var spiningActive: UIActivityIndicatorView!
+    
+    @IBAction func bookMarkAction(_ sender: Any) {
+        let bookMarkUrl = bookMarkSegmentCountrol.titleForSegment(at: bookMarkSegmentCountrol.selectedSegmentIndex)
+        let urlString = "http://www.\(bookMarkUrl!).com"
+        miniWebVIew.loadRequest(URLRequest(url: URL(string: urlString)!))
+        urlTextField.text = urlString
+        
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        var urlString = "\(urlTextField.text!)"
+        if !urlString.hasPrefix("https//") {
+            urlString = "http://\(urlTextField.text!)"
+        }
+        miniWebVIew.loadRequest(URLRequest(url: URL(string: urlString)!))
+        textField.resignFirstResponder()
+        return true
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let urlString = "http://www.facebook.com"
+        miniWebVIew.loadRequest(URLRequest(url: URL(string: urlString)!))
+        urlTextField.text = urlString
+       
+        
+        
         
         // 구글배너
         print("Google Mobile Ads SDK version: " + GADRequest.sdkVersion())
@@ -30,6 +57,16 @@ class ViewController: UIViewController {
         bannerView.load(GADRequest())
     
     }
+    
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        spiningActive.startAnimating()
+    }
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        spiningActive.stopAnimating()
+    
+    }
+    
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

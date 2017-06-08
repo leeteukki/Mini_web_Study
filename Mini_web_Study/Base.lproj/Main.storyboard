@@ -29,12 +29,18 @@
                                     <segment title="Google"/>
                                     <segment title="Apple"/>
                                 </segments>
+                                <connections>
+                                    <action selector="bookMarkAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="4h0-Rs-tLd"/>
+                                </connections>
                             </segmentedControl>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="URL" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ITt-9F-PSC">
                                 <rect key="frame" x="0.0" y="48" width="375" height="30"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="URL"/>
+                                <textInputTraits key="textInputTraits" keyboardType="URL" returnKeyType="go"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="crz-DJ-0lS"/>
+                                </connections>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="iS7-db-TQq">
                                 <rect key="frame" x="0.0" y="616" width="375" height="50"/>
@@ -69,7 +75,15 @@
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1wN-bB-zQz">
                                 <rect key="frame" x="0.0" y="86" width="375" height="486"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="LVt-aJ-8Ce"/>
+                                </connections>
                             </webView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="oZY-E5-JLw">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -102,6 +116,7 @@
                         <outlet property="bannerView" destination="JNo-Zp-AWc" id="KcH-HV-80z"/>
                         <outlet property="bookMarkSegmentCountrol" destination="jqt-oW-Q7c" id="hNr-t8-tia"/>
                         <outlet property="miniWebVIew" destination="1wN-bB-zQz" id="WxV-PL-jdt"/>
+                        <outlet property="spiningActive" destination="oZY-E5-JLw" id="N3Q-yj-Uky"/>
                         <outlet property="urlTextField" destination="ITt-9F-PSC" id="PEv-FJ-TVI"/>
                     </connections>
                 </viewController>
